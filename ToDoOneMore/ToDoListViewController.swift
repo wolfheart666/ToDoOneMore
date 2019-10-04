@@ -43,10 +43,19 @@ class ToDoListViewController: UITableViewController {
     }
 
     @IBAction func barButtonPressed(_ sender: UIBarButtonItem) {
+        var textField = UITextField()
         let alert = UIAlertController(title: "New Item?", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add A new Item", style: .default) { (action) in
             //how we handle the action
-    
+            self.itemArray.append(textField.text!)
+            self.tableView.reloadData()
+            
+            }
+        
+        //forgot this shit completely. This code should be outside action constant 
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Create New Item"
+            textField = alertTextField
         }
         // everything was fine but forgot to add action to alert and forgot to present the alert
         alert.addAction(action)
