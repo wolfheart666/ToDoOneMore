@@ -10,7 +10,7 @@ import UIKit
 
 class ToDoListViewController: UITableViewController {
 
-    var itemArray = ["A", "B", "C"]
+    var itemArray = ["Machine Learning", "AI", "Swift"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +19,7 @@ class ToDoListViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemArray.count
+        
     }
     
     
@@ -30,6 +31,7 @@ class ToDoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        print(itemArray[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
         
         // the following lines of code need to be fixed with a terniary operator
@@ -40,6 +42,18 @@ class ToDoListViewController: UITableViewController {
         }
     }
 
+    @IBAction func barButtonPressed(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "New Item?", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Add A new Item", style: .default) { (action) in
+            //how we handle the action
+    
+        }
+        // everything was fine but forgot to add action to alert and forgot to present the alert
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+      
+        
+    }
 
 }
 
