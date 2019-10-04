@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CoreData 
 
 class ToDoListViewController: UITableViewController {
+    
+    let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
 
     var itemArray = ["Machine Learning", "AI", "Swift"]
     
@@ -44,13 +47,24 @@ class ToDoListViewController: UITableViewController {
 
     @IBAction func barButtonPressed(_ sender: UIBarButtonItem) {
         var textField = UITextField()
+    
         let alert = UIAlertController(title: "New Item?", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add A new Item", style: .default) { (action) in
             //how we handle the action
+           
+            
             self.itemArray.append(textField.text!)
             self.tableView.reloadData()
             
+            
+            
             }
+//        func saveItems() {
+//            do { try?   context.save()
+//            } catch {
+//                print("error saving context\(error)")
+//            }
+//        }
         
         //forgot this shit completely. This code should be outside action constant 
         alert.addTextField { (alertTextField) in
@@ -63,6 +77,8 @@ class ToDoListViewController: UITableViewController {
       
         
     }
+    
+    
 
 }
 
